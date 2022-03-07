@@ -3,3 +3,7 @@
   color: #CCAD8F;
   font-size: 3rem;
 }
+
+* {
+  transition: all 0.3s ease
+}
