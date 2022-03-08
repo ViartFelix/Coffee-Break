@@ -31,6 +31,7 @@ export default function Articles() {
           {data.map( x =>  <article key={x.id}>
                               <h1 className="Article_title">{x.title}</h1>
                               <section dangerouslySetInnerHTML={{__html: x.content}}></section>
+                              <h1>{x.id}</h1>
                               {displayMedia(x.mediaType,x.mediaURL)}
                            </article>
            )}
