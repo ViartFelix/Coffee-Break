@@ -14,11 +14,12 @@ let db = new sqlite3.Database('./data/ecoalDB', sqlite3.OPEN_READWRITE | sqlite3
 
 let query = [
 "PRAGMA foreign_keys = ON",
-"DROP TABLE IF EXISTS article",
+"DROP TABLE IF EXISTS articles",
 "DROP TABLE IF EXISTS tag",
 "DROP TABLE IF EXISTS article_tag",
-"CREATE TABLE article (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, content TEXT NOT NULL, thumbnailURL TEXT, mediaType TEXT, mediaURL TEXT, leadStory INTEGER)",
+"CREATE TABLE articles (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL, content TEXT NOT NULL, thumbnailURL TEXT, mediaType TEXT, mediaURL TEXT, leadStory INTEGER, publish DATETIME)",
 "CREATE TABLE tag (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL)",
+
 "CREATE TABLE article_tag (id INTEGER PRIMARY KEY AUTOINCREMENT, idArticle INTEGER REFERENCES article(id), idTag INTEGER REFERENCES tag(id))",
 "INSERT INTO article (title, content, thumbnailURL, mediaType, mediaURL) values ('1 in 10 Americans say they don't eat meat, a growing share of the population', '<p>About 10% of Americans over the age of 18 consider themselves vegan or vegetarian as of January 2022. Thats the main finding of an online survey we administered to 930 Americans, selected to be representative of the U.S population in terms of gender, education, age and income. The margin of error is plus or minus 2%.Based on our findings, which will be published in a forthcoming academic journal article, we believe that this group of people, numbering some 16.5 million, is evenly split between vegetarians and vegans. Vegans dont eat anything derived from animals, including eggs, milk and honey. Vegetarians avoid eating the flesh of animals, including beef, pork, poultry, fish and seafood. </p><h1> Changing rationales</h1> <p>Until fairly recently most people who said they avoided eating meat cited religious and cultural beliefs, animal welfare concerns and personal health precautions</p><p>Environmental activists urge Americans to shun meat. And adopting a vegan diet is increasingly fashionable because of the growing list of celebrities such as Benedict Cumberbatch, Stevie Wonder and Natalie Portman who say they refrain from eating animal products.</p>', 'burger-1-article.jpg', 'image', 'https://theconversation.com1-in-10-americans-say-they-dont-eat-meat-a-growing-share-of-the-population-176948)'",
 
@@ -35,7 +36,8 @@ let query = [
 "INSERT INTO article (title, content, thumbnailURL, mediaType, mediaURL) values ('Who invented video games?','<p>Students who are the first in their family to attend college tend to see it as a means to improve their personal lives and as an opportunity for social mobility. That contrasts with the main message students get from policymakers and universities that largely emphasize career growth.<p>This is the main finding from interviews we conducted with 21 undergraduate students at the University of California, Davis interested in education as a possible career. Eleven of the students were first generation. The rest were what we call continuing education students; that is, people whose parents went to college. They were all either sophomores, juniors or seniors.</p><p>Our aim was to understand how first-generation students view the role of higher education in their lives and in society.</p><p>But in the interviews, we found that students weigh many goals when pursuing a college degree – ones that frequently shifted from primarily social mobility to other, broader goals. These include professional development, learning for the sake of intellectual growth, pursuing careers with a purpose beyond earning potential, and contributing to society.</p><p>Most of the first-generation students we interviewed focused on social justice efforts like giving back to their communities and disrupting systemic inequities.</p><p>For example, one student majoring in Chicana and Chicano studies and minoring in education said that even though teachers do not make a lot of money, her college education will allow her to help kids in low-income communities.</p><p>Students whose parents went to college typically said they see education as a way to help them become better citizens and critical thinkers</p>', 'student-article-4.jpg', 'image', 'https://theconversation.com/beyond-social-mobility-college-students-value-giving-back-to-society-171279')",
 
 
-
+"CREATE TABLE article_tag (id INTEGER PRIMARY KEY AUTOINCREMENT, idArticle INTEGER REFERENCES articles(id), idTag INTEGER REFERENCES tag(id))",
+"INSERT INTO articles (title, content, thumbnailURL, mediaType, mediaURL, publish) values ('Welcome to ecoal22', '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>', 'ecoal.jpg', 'image', 'ecoal.jpg', '2022-03-08 13:14:09')",
 "INSERT INTO tag (name) values ('ecoal22')",
 "INSERT INTO tag (name) values ('reactJS')",
 "INSERT INTO article_tag (idArticle, idTag) values (1,1)",
