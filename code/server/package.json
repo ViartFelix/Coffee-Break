@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
-    "initdb": "node data/initdb.js"
+    "initdb": "node data/initdb.js",
+    "filldb": "node data/filldb.js"
   },
   "keywords": [],
   "author": "",
