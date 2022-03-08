@@ -13,7 +13,7 @@ routes
 
     .get("/articles", (req,res) => {
             db.all(
-                     "select * from article",
+                     "select * from articles",
                      (err, rows) => res.json(rows)
           );
 
