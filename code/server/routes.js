@@ -19,13 +19,14 @@ routes
 
     })
     //Adds Records/
+
         .post("/articles", (req,res) =>
         {
 
                 let title = req.body.title 
                 let content = req.body.content
                 let thumbnailURL = req.body.content
-                let mediaType = req.body. mediaType
+                let mediaType = req.body.mediaType
                 let mediaUrl = req.body.mediaUrl
 
 
@@ -43,4 +44,7 @@ routes
                             message: "article successful"
                     })
                 })
+                
         })
+        module.exports = routes;
+        

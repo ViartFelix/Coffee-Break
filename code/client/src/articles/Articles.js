@@ -10,6 +10,7 @@ export default function Articles() {
   async function getArticles() {
     const data = (await axios.get('http://localhost:8000/articles')).data;
     setData(data);
+    console.log(data)
   }
 
 
@@ -19,7 +20,7 @@ export default function Articles() {
    }, []);
 
    function displayMedia(type, url) {
-     return <img src={"http://localhost:8000/media/" +url} />
+     return  <img src={url="http://localhost:8000/media/" + url} />
    }
 
 
