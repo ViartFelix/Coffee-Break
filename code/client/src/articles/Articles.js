@@ -22,12 +22,18 @@ export default function Articles() {
      return <img src={"http://localhost:8000/media/" +url} />
    }
 
+    
+   if(data.length == 0)
+       return null
+   let last = data[0]
+    
 
     return (
        <>
-        <h1>
-            Articles !!
-        </h1>
+         
+        <div className='last'>{displayMedia(last.mediaType, last.mediaURL)}</div>
+        <h2>
+        Latest news !!</h2>
           {data.map( x =>  <article key={x.id}>
                               <h1 className="Article_title">{x.title}</h1>
                               <section dangerouslySetInnerHTML={{__html: x.content}}></section>

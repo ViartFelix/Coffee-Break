@@ -7,3 +7,9 @@
 * {
   transition: all 0.3s ease
 }
+
+
+.last img { width: 100%;}
+
+h2 {background-color : brown;
+color : white;}
