@@ -1,7 +1,8 @@
 import {Route, Link, Routes} from "react-router-dom"
-import Home from "./home/Home";
+
 import Articles from "./articles/Articles";
 import './App.css'
+import Home from './components/Home'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Link to="/articles">News</Link>
     </nav>
 
+      <Home/>
       <Routes>
         <Route exact={true} path="/" element={<Home/>}/>
         <Route exact={true} path="/articles" element={<Articles/>}/>
