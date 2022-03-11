@@ -32,6 +32,11 @@ export default function Articles() {
                               <h1 className="Article_title">{x.title}</h1>
                               <section dangerouslySetInnerHTML={{__html: x.content}}></section>
                               {displayMedia(x.mediaType,x.mediaURL)}
+
+                              
+
+
+
                            </article>
            )}
       </>

@@ -1,9 +1,10 @@
 
-.Article_title {
-  color: #CCAD8F;
-  font-size: 3rem;
+
+
+.log {
+  width: 594px;
+  height: 489px;
+  left: -124px;
+  top: -40px;
 }
 
-* {
-  transition: all 0.3s ease
-}
