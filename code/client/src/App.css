@@ -1,4 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Sail&display=swap');
+ 
  nav a {
    display: inline-block;
    margin-left: 20px;  
  }
+ 
+ nav {
+   background-color: #4B3E2F;
+   width: 100%;
+ }
+
+.Title {
+  align-items: center;
+  color: #FAF8D9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: "Comfortaa";
+  font-weight: 400;
+  font-size: 10px;
+}
+
+.Title svg {
+  fill: #FAF8D9;
+}
+
+.logo {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 12vw;
+ }
+
+ .avatar {
+   padding-right: 10px;
+   width: 12vw;
+ }
+
+ .burger {
+   padding-left: 10px;
+ }
+
