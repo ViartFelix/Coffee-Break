@@ -4,7 +4,6 @@ const routes = express.Router();
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('data/ecoalDB');
 
-module.exports = routes;
 
 routes
     .get("/", (req, res) => {
@@ -13,7 +12,7 @@ routes
 
     .get("/articles", (req,res) => {
             db.all(
-                     "select * from articles",
+                     "select * from articles ,tag , article_tag",
                      (err, rows) => res.json(rows)
           );
 
@@ -28,10 +27,15 @@ routes
                 let thumbnailURL = req.body.content
                 let mediaType = req.body.mediaType
                 let mediaUrl = req.body.mediaUrl
+                let name= req.body.name
+                let idArticle=req.body.idArticle
+                let idTag=req.body.idTag
 
 
-                db.run("INSERT INTO article (title, content, thumbnailURL, mediaType, mediaUrl) values (?,?,?,?,?)", 
-                [title, content, thumbnailURL, mediaType, mediaUrl], (err) =>
+
+
+                db.run("INSERT INTO article (title, content, thumbnailURL, mediaType, mediaUrl) values (?,?,?,?,?), INSERT INTO tag(name),INSERT INTO article_tag(idArticle, idTag)", 
+                [title, content, thumbnailURL, mediaType, mediaUrl,name, idArticle, idTag], (err) =>
                 {
                     if(err)
                     {

@@ -12,15 +12,24 @@ export default function Articles() {
     setData(data);
     console.log(data)
   }
+  async function getTags() {
+    const data = (await axios.get('http://localhost:8000/articles')).data;
+    setData(data);
+    console.log(data)
+  }
 
 
 
    useEffect(() => {
     getArticles()
+    getTags()
    }, []);
 
    function displayMedia(type, url) {
      return  <img src={url="http://localhost:8000/media/" + url} />
+   }
+   function displayTags(id, name,url){
+    return <p src={url="http://localhost:8000/tag/" + url}/>
    }
 
 
@@ -33,7 +42,12 @@ export default function Articles() {
                               <h1 className="Article_title">{x.title}</h1>
                               <section dangerouslySetInnerHTML={{__html: x.content}}></section>
                               {displayMedia(x.mediaType,x.mediaURL)}
+                              <h1 className="tag">{x.name}</h1>
+                              <section dangerouslySetInnerHTML={{__html: x.id}}></section>
+                              {displayTags(x.id,x.name)}
+
                            </article>
+                           
            )}
       </>
     );
