@@ -4,7 +4,7 @@ import Articles from "./articles/Articles";
 import Search from "./search/Search";
 import Article_view from "./article-view/Article_view";
 import Write from "./write/Write";
-import Home from './components/Home'
+import Home from './home/Home'
 import Login, {ProtectedRoute, NotProtectedLink, ProtectedLink} from "./login/Login";
 import './App.css';
 import {useCookies, withCookies} from 'react-cookie';
