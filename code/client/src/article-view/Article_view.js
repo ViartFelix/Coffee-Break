@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import  { useParams } from 'react-router-dom';
 import axios from 'axios';
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import "./Article_view.css";
 
 export default function Article_view() {
 
@@ -20,6 +21,10 @@ export default function Article_view() {
 
   console.log(data);
 
+  function displayMedia(url) {
+    return <img className="img" src={"http://localhost:8000/media/"+url}/>
+  }
+
   //let art = data;
 
   //console.log(art);
@@ -27,12 +32,13 @@ export default function Article_view() {
 
   return (<div>
     {data.map(x =>
-      <article key={x.id}>
-      {console.log(x.title)}
-        <h1 className="Article_title">{x.title}</h1>
-        <section dangerouslySetInnerHTML={{__html: x.content}}></section>
-        <h1>{x.id}</h1>
-      </article>
+      <section key={x.id} className="article">
+        <div className="media__container"> {displayMedia(x.mediaURL)} </div>
+        <div className="container">
+          <h3 className="article__title">{x.title}</h3>
+          <div className="article__content" dangerouslySetInnerHTML={{__html: x.content}}></div>
+        </div>
+      </section>
     )}
     </div>);
 }

@@ -2,7 +2,7 @@ import {Route, Link, Routes} from "react-router-dom"
 import Home from "./home/Home";
 import Articles from "./articles/Articles";
 import Search from "./search/Search";
-import Article_view from "./article_view";
+import Article_view from "./article-view/Article_view";
 import Write from "./write/Write";
 import Login, {ProtectedRoute, NotProtectedLink, ProtectedLink} from "./login/Login";
 import './App.css';
