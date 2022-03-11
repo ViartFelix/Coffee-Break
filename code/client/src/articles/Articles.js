@@ -30,14 +30,20 @@ export default function Articles() {
 
     return (
        <>
-         
-        <div className='last'>{displayMedia(last.mediaType, last.mediaURL)}</div>
-        <h2>
-        Latest news !!</h2>
+    
+
+        <div className='Main_article'>
+          {displayMedia(last.mediaType, last.mediaURL)}
+          <span className="Main_title">Ukrainian and Russian: how similar are the two languages?</span>
+        </div>
+        <h2 className="Latest_news">Latest News</h2>
+        
           {data.map( x =>  <article key={x.id}>
-                              <h1 className="Article_title">{x.title}</h1>
-                              <section dangerouslySetInnerHTML={{__html: x.content}}></section>
-                              {displayMedia(x.mediaType,x.mediaURL)}
+                              <div className="Article_text">
+                              <h3 className="Article_title">{x.title}</h3>
+                              <h4>{x.publish}</h4>
+                              </div>
+                              <div className="Thumbnail">{displayMedia(x.mediaType,x.mediaURL)}</div>
                            </article>
            )}
       </>
