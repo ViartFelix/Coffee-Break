@@ -4,7 +4,6 @@ const routes = express.Router();
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('data/ecoalDB');
 
-const verify=require('./connectionRouter').verify;
 
 routes
 .get("/", (req,res) => {
@@ -15,11 +14,12 @@ routes
 })
 
   .get("/articles", (req,res) => {
-    db.all(
-      "select * from articles",
-      (err, rows) => res.json(rows)
-    );
+        db.all(
+                 "select * from articles ,tag , article_tag",
+                 (err, rows) => res.json(rows)
+      );
   })
+
 
   .get("/search/:query?", (req,res)=> {
     let myQuery=req.params.query
@@ -45,19 +45,36 @@ routes
     );
   })
 
-  .post("/write", (req,res)=> {
-    let title=req.body.title;
-    let content=req.body.content;
+  .post("/write", (req,res) =>
+  {
 
-    db.run("INSERT INTO articles (title, content) values (?,?)",[title, content], (err) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      res.status(200).send({
-        success: "true",
-        message: "article successful"
-      })
-    })
+          let title = req.body.title
+          let content = req.body.content
+          let thumbnailURL = req.body.content
+          let mediaType = req.body.mediaType
+          let mediaUrl = req.body.mediaUrl
+          let name= req.body.name
+          let idArticle=req.body.idArticle
+          let idTag=req.body.idTag
+
+
+
+
+          db.run("INSERT INTO article (title, content, thumbnailURL, mediaType, mediaUrl) values (?,?,?,?,?), INSERT INTO tag(name),INSERT INTO article_tag(idArticle, idTag)",
+          [title, content, thumbnailURL, mediaType, mediaUrl,name, idArticle, idTag], (err) =>
+          {
+              if(err)
+              {
+              console.log("An Error has occured")
+              return res.status(500).json(err);
+              }
+
+                      res.status(200).json({
+                      success: "true",
+                      message: "article successful"
+              })
+          })
+
   })
 
 module.exports = routes;
@@ -71,4 +88,8 @@ module.exports = routes;
         (err, rows) => res.json(rows)
       )
     })
-*/
+    */
+    //Adds Records/
+
+
+        module.exports = routes;
