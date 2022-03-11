@@ -1,0 +1,62 @@
+section.article {
+  background-color: #FAF8D9;
+}
+
+.media__container {
+ width: 100%;
+ height: auto;
+ overflow: hidden;
+}
+
+.media__container img, .media__container embed, .media__container iframe, .media__container audio, .media__container video {
+  width: 100%;
+  height: auto;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.article {
+  font-family: Overpass;
+  padding-bottom: 50px;
+}
+
+.article__title {
+  font-weight: 900;
+  font-size: 30px;
+}
+
+.article__content {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.article__content h1, .article__content h2, .article__content h3, .article__content h4, .article__content h5, .article__content h6 {
+  font-weight: 600;
+}
+
+.article__content h1 {
+  font-size: 25px;
+}
+
+.article__content h2 {
+  font-size: 23px;
+}
+
+.article__content h3 {
+  font-size: 22px;
+}
+
+.article__content h4 {
+  font-size: 21px;
+}
+
+.article__content h5 {
+  font-size: 20px;
+}
+
+.article__content h6 {
+  font-size: 19px;
+}

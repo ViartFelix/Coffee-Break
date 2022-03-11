@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./Articles.css";
-
+import {Link} from "react-router-dom";
 
 export default function Articles() {
 
@@ -18,7 +18,7 @@ export default function Articles() {
     console.log(data)
   }
 
-
+  console.log(data)
 
    useEffect(() => {
     getArticles()
@@ -32,23 +32,20 @@ export default function Articles() {
     return <p src={url="http://localhost:8000/tag/" + url}/>
    }
 
+     return (
+        <>
+         <h1>
+             Articles !!
+         </h1>
+           {data.map( x => <article key={x.id}>
+                              <Link to={"/article_view/"+ x.id}> <h1 className="Article_title">{x.title}</h1> </Link>
+                               <section dangerouslySetInnerHTML={{__html: x.content}}></section>
+                               <h1>{x.id}</h1>
+                               {displayMedia(x.mediaType,x.mediaURL)}
+                            </article>
+            )}
+       </>
+     );
 
-    return (
-       <>
-        <h1>
-            Articles !!
-        </h1>
-          {data.map( x =>  <article key={x.id}>
-                              <h1 className="Article_title">{x.title}</h1>
-                              <section dangerouslySetInnerHTML={{__html: x.content}}></section>
-                              {displayMedia(x.mediaType,x.mediaURL)}
-                              <h1 className="tag">{x.name}</h1>
-                              <section dangerouslySetInnerHTML={{__html: x.id}}></section>
-                              {displayTags(x.id,x.name)}
 
-                           </article>
-                           
-           )}
-      </>
-    );
 }
