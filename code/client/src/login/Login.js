@@ -39,7 +39,7 @@ export default function Login() {
             password: passwordRef.current.value
         };
         try {
-            const p = (await axios.post('http://localhost:8000/login/signup', user));
+            const p = (await axios.post('http://localhost:8000/signup', user));
             if (p.status === 200) {
                 user.token = p.data.token;
                 setCookie('login', user, '/');
