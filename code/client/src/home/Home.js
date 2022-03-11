@@ -18,9 +18,6 @@ export default function Home() {
     console.log(data);
 
     return (<>
-        <h1 className="Home_title">
-            My Online Newspaper !! Baguette
-        </h1>
 
         {data.map( x =>  <article key={x.id}>
                             <Link to={"/article_view/"+ x.id}> <h1 className="Article_title">{x.title}</h1> </Link>

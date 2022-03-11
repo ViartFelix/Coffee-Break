@@ -1,10 +1,10 @@
 import {Route, Link, Routes} from "react-router-dom"
 
+import Home from './home/Home';
 import Articles from "./articles/Articles";
 import Search from "./search/Search";
 import Article_view from "./article-view/Article_view";
 import Write from "./write/Write";
-import Home from './home/Home'
 import Login, {ProtectedRoute, NotProtectedLink, ProtectedLink} from "./login/Login";
 import './App.css';
 import {useCookies, withCookies} from 'react-cookie';
@@ -31,7 +31,7 @@ function App() {
 
     </nav>
 
-      <Home/>
+      
       <Routes>
         <Route exact={true} path="/" element={<Home/>}/>
         <Route exact={true} path="/articles" element={<ProtectedRoute><Articles/></ProtectedRoute>}/>
