@@ -8,7 +8,10 @@ module.exports = routes;
 
 routes
     .get("/", (req, res) => {
-        res.json("Hello world!!");
+      db.all(
+               "select * from articles order by publish limit 3",
+               (err, rows) => res.json(rows)
+      );
     })
 
     .get("/articles", (req,res) => {
