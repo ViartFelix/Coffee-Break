@@ -72,8 +72,6 @@ export default function Login() {
 
     async function onSignin(e) {
         e.preventDefault();
-
-        console.log('ùokzqdpokqzkpd,');
         const user = {
             username: e.target.username.value,
             password: e.target.password.value
@@ -90,7 +88,7 @@ export default function Login() {
     }
 
     if (cookies.login && cookies.login.token) {
-        return <button id="disconnect" onClick={disconnect}>disconnect</button>;
+        return <p className="alc"><button id="disconnect" onClick={disconnect}>disconnect</button></p>;
     }
     return <FormLogin onSignin={onSignin} onSignup={onSignup} usernameRef={usernameRef} passwordRef={passwordRef}/>
 }

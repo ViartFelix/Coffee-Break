@@ -17,13 +17,22 @@ export default function Home() {
 
     console.log(data);
 
+    function displayMedia(type, url) {
+      return  <img src={"http://localhost:8000/media/" + url} />
+    }
+
     return (<>
 
-        {data.map( x =>  <article key={x.id}>
-                            <Link to={"/article_view/"+ x.id}> <h1 className="Article_title">{x.title}</h1> </Link>
-                            <section dangerouslySetInnerHTML={{__html: x.content}}></section>
-                            <h1>{x.id}</h1>
-                         </article>
-         )}
+      <p className="alc al_title"><h1 className="Home_title">Latest News</h1></p>
+
+      {data.map( x =>
+      <article key={x.id}>
+        <div className="Article_text">
+          <Link to={"/article_view/"+ x.id}> <h3 className="Article_title">{x.title}</h3> </Link>
+          <h4>{x.publish}</h4>
+        </div>
+        <div className="Thumbnail">{displayMedia(x.mediaType,x.mediaURL)}</div>
+      </article>
+      )}
     </>);
 }

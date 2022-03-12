@@ -1,0 +1,61 @@
+.form__thumbnail {
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+}
+
+.form__thumbnail p {
+  margin: 0;
+}
+
+.thumbnail__image {
+  width: 100%;
+  height: auto;
+  background-color: #717171;
+  margin-bottom: 10px;
+}
+
+.thumbnail__input, .title__input, .content__input {
+  border: none;
+  border-bottom: 2px solid #000;
+  background-color: transparent;
+}
+
+hr {
+  max-width: 80%;
+  margin: 50px auto;
+  color: #000;
+  height: 2px;
+}
+
+h1.alc {
+  margin-bottom: 15px;
+}
+
+.content__input {
+  margin-bottom: 50px;
+}
+
+.title__input, .content__input {
+  width: 100%;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #000;
+}
+
+.title__input {
+  margin-bottom: 25px;
+}
+
+button {
+  border: 3px solid #000;
+  background-color: transparent;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background-color: #000;
+  color: #fff;
+}
