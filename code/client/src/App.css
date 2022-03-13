@@ -1,4 +1,13 @@
  nav a {
    display: inline-block;
-   margin-left: 20px;  
+   margin-left: 20px;
  }
+
+.coffee-break-title{
+  color:red;
+  font:bold;
+}
+
+body, html {
+  overflow-x: hidden;
+}
