@@ -12,37 +12,32 @@ export default function Articles() {
     setData(data);
     console.log(data)
   }
-  async function getTags() {
-    const data = (await axios.get('http://localhost:8000/articles')).data;
-    setData(data);
-    console.log(data)
-  }
 
   console.log(data)
 
    useEffect(() => {
     getArticles()
-    getTags()
    }, []);
 
    function displayMedia(type, url) {
-     return  <img src={url="http://localhost:8000/media/" + url} />
+     return  <img src={"http://localhost:8000/media/" + url} />
    }
+
    function displayTags(id, name,url){
     return <p src={url="http://localhost:8000/tag/" + url}/>
    }
 
      return (
         <>
-         <h1>
-             Articles !!
-         </h1>
-           {data.map( x => <article key={x.id}>
-                              <Link to={"/article_view/"+ x.id}> <h1 className="Article_title">{x.title}</h1> </Link>
-                               <section dangerouslySetInnerHTML={{__html: x.content}}></section>
-                               <h1>{x.id}</h1>
-                               {displayMedia(x.mediaType,x.mediaURL)}
-                            </article>
+         <p className="alc al_title"><h1 className="Home_title">All the articles</h1></p>
+            {data.map( x =>
+            <article key={x.id}>
+              <div className="Article_text">
+                <Link to={"/article_view/"+ x.id}> <h3 className="Article_title">{x.title}</h3> </Link>
+                <h4>{x.publish}</h4>
+              </div>
+              <div className="Thumbnail">{displayMedia(x.mediaType,x.mediaURL)}</div>
+            </article>
             )}
        </>
      );

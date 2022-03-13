@@ -15,7 +15,7 @@ routes
 
   .get("/articles", (req,res) => {
         db.all(
-                 "select * from articles ,tag , article_tag",
+                 "select * from articles",
                  (err, rows) => res.json(rows)
       );
   })
@@ -25,7 +25,7 @@ routes
     let myQuery=req.params.query
        if (!myQuery) {
          db.all(
-           "select * from articles",
+           "select * from articles order by publish",
            (err, rows) => res.json(rows)
          );
        }
@@ -45,37 +45,28 @@ routes
     );
   })
 
-  .post("/write", (req,res) =>
-  {
+  .post("/write", (req,res)=> {
+  let title=req.body.title;
+  let content=req.body.content;
+  let thumbnailURL=req.body.thumbnail;
 
-          let title = req.body.title
-          let content = req.body.content
-          let thumbnailURL = req.body.content
-          let mediaType = req.body.mediaType
-          let mediaUrl = req.body.mediaUrl
-          let name= req.body.name
-          let idArticle=req.body.idArticle
-          let idTag=req.body.idTag
+  let today = new Date();
+  let dd = String(today.getDate()).padStart(2, '0');
+  let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  let yyyy = today.getFullYear();
 
+  today = dd + '/' + mm + '/' + yyyy;
 
-
-
-          db.run("INSERT INTO article (title, content, thumbnailURL, mediaType, mediaUrl) values (?,?,?,?,?), INSERT INTO tag(name),INSERT INTO article_tag(idArticle, idTag)",
-          [title, content, thumbnailURL, mediaType, mediaUrl,name, idArticle, idTag], (err) =>
-          {
-              if(err)
-              {
-              console.log("An Error has occured")
-              return res.status(500).json(err);
-              }
-
-                      res.status(200).json({
-                      success: "true",
-                      message: "article successful"
-              })
-          })
-
+  db.run("INSERT INTO articles (title, content, thumbnailURL, publish) values (?,?,?,?)",[title, content, thumbnailURL, today], (err) => {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    res.status(200).send({
+      success: "true",
+      message: "article successful"
+    })
   })
+});
 
 module.exports = routes;
 
